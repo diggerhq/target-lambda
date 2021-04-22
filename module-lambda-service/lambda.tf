@@ -23,6 +23,7 @@ resource "aws_lambda_function" "test_lambda" {
   image_uri     = var.ecr_repo.repository_url
   function_name = var.service_name
   role          = aws_iam_role.iam_for_lambda.arn
+  package_type  = "Image"
 
   # docker options
   # image_config {
