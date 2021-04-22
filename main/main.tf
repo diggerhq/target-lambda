@@ -1,10 +1,4 @@
 
-variable "aws_key" {
-}
-
-variable "aws_secret" {
-}
-
 terraform {
   required_version = ">= 0.12"
 
