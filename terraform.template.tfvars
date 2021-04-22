@@ -6,7 +6,7 @@ aws_secret = "{{aws_secret}}"
 project_name = "{{app_name}}"
 environment = "{{environment}}"
 
-# region = "{{region}}"
+region = "{{region}}"
 # availabilityZone_a = "{{region}}a"
 # availabilityZone_b = "{{region}}b"
 
