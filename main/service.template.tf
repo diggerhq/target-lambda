@@ -1,5 +1,5 @@
 
-module {
+module "service-{{service_name}}" {
   source = "../module-lambda-service" 
   project_name = var.project_name
   environment = var.environment
