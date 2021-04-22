@@ -24,6 +24,12 @@ resource "aws_lambda_function" "test_lambda" {
   function_name = var.service_name
   role          = aws_iam_role.iam_for_lambda.arn
 
-  runtime = "python3.8"
+  # docker options
+  # image_config {
+  #   command           = var.dockerfile_command
+  #   entrypoint        = var.dockerfile_entrypoint
+  #   working_directory = var.dockerfile_working_directory
+  # }
 
+  runtime = "python3.8"
 }
