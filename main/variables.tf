@@ -8,5 +8,3 @@ variable "aws_secret" {}
 variable "project_name" {}
 
 variable "environment" {}
-
-variable "region" {}
