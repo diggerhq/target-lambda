@@ -14,5 +14,5 @@ variable "image_uri" {
 }
 
 variable "dockerfile_command" {
-  default = tolist(["app.handler"])
+  default = ["app.handler"]
 }
