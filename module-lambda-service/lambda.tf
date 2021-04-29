@@ -20,18 +20,18 @@ EOF
 }
 
 resource "aws_lambda_function" "test_lambda" {
-  image_uri     = "${var.ecr_repo.repository_url}:latest"
+  image_uri     = var.image_uri
   # image_uri     = "quay.io/turner/turner-defaultbackend:0.2.0"
   function_name = var.service_name
   role          = aws_iam_role.iam_for_lambda.arn
   package_type  = "Image"
 
   # docker options
-  # image_config {
-  #   command           = var.dockerfile_command
-  #   entrypoint        = var.dockerfile_entrypoint
-  #   working_directory = var.dockerfile_working_directory
-  # }
+  image_config {
+    command           = var.dockerfile_command
+    # entrypoint        = var.dockerfile_entrypoint
+    # working_directory = var.dockerfile_working_directory
+  }
 
   runtime = "python3.8"
 }
