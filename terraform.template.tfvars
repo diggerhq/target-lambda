@@ -13,3 +13,5 @@ region = "{{region}}"
 # {% if environment_config.rds_instance_class %}
 # rds_instance_class= "{{environment_config.rds_instance_class}}"
 # {% endif %}
+
+image_uri = "{{environment_config.image_uri}}"
