@@ -6,7 +6,7 @@ resource "aws_ecr_repository" "lambda_repo" {
 }
 
 module "ecr_image" {
-  source = "github.com/byu-oit/terraform-aws-ecr-image?ref=v1.0.1"
+  source = "../module-aws-ecr-image"
   dockerfile_dir = "lambda-default-image"
   ecr_repository_url = aws_ecr_repository.lambda_repo.repository_url
 }
