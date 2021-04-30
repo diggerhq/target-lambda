@@ -6,6 +6,7 @@ module "service-{{service_name}}" {
   service_name = "{{service_name}}"
   ecr_repo = aws_ecr_repository.lambda_repo
   api_gateway = aws_api_gateway_rest_api.main
+  image_uri = "{{environment_config.image_uri}}"
   }
 
 output "{{service_name}}_docker_registry" {
