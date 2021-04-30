@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # This script facilitates checking if the contents are different between `terraform apply` runs
 
