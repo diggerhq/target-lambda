@@ -22,7 +22,7 @@ EOF
 resource "aws_lambda_function" "test_lambda" {
   image_uri     = var.image_uri
   # image_uri     = "quay.io/turner/turner-defaultbackend:0.2.0"
-  function_name = locals.function_name
+  function_name = local.function_name
   role          = aws_iam_role.iam_for_lambda.arn
   package_type  = "Image"
 
