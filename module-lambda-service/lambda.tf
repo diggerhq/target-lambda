@@ -33,5 +33,5 @@ resource "aws_lambda_function" "test_lambda" {
     # working_directory = var.dockerfile_working_directory
   }
 
-  runtime = "python3.8"
+  # runtime = "python3.8"
 }
