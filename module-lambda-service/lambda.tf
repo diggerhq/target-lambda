@@ -1,5 +1,6 @@
 
 resource "aws_iam_role" "iam_for_lambda" {
+  count = var.lambda_role == null ? 0 : 1
   name_prefix = "iam_for_lambda"
 
   assume_role_policy = <<EOF
@@ -23,7 +24,7 @@ resource "aws_lambda_function" "test_lambda" {
   image_uri     = var.image_uri
   # image_uri     = "quay.io/turner/turner-defaultbackend:0.2.0"
   function_name = local.function_name
-  role          = aws_iam_role.iam_for_lambda.arn
+  role          = var.lambda_role == null ? aws_iam_role.iam_for_lambda.arn : var.lambda_role
   package_type  = "Image"
 
   # docker options

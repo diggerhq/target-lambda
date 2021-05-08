@@ -13,6 +13,10 @@ variable "image_uri" {
   default = "public.ecr.aws/t4q6p9j7/dg-lambda-default:latest"
 }
 
+variable "lambda_role" {
+  default = null
+}
+
 variable "dockerfile_command" {
   default = ["app.handler"]
 }
