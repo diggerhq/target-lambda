@@ -12,8 +12,8 @@ module "service-{{service_name}}" {
   {% endif %}
 
   {% if environment_config.in_vpc %}
-    vpc_subnet_ids = split("{{environment_config.subnet_ids}}", ",")
-    vpc_security_groups = split("{{environment_config.security_group_ids}}", ",")
+    vpc_subnet_ids = split(",", "{{environment_config.subnet_ids}}")
+    vpc_security_groups = split("," "{{environment_config.security_group_ids}}")
   {% endif %}
 }
 
