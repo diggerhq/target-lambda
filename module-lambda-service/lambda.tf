@@ -34,5 +34,10 @@ resource "aws_lambda_function" "test_lambda" {
     # working_directory = var.dockerfile_working_directory
   }
 
+  vpc_config {
+    count = vpc_subnet_ids == null ? 0 : 1
+    security_group_ids = var.vpc_subnet_ids
+    subnet_ids = var.vpc_security_group_ids
+  }
   # runtime = "python3.8"
 }

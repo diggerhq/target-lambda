@@ -17,6 +17,14 @@ variable "lambda_role" {
   default = null
 }
 
+variable "vpc_subnet_ids" {
+  default = null
+}
+
+variable "vpc_security_group_ids" {
+  default = null
+}
+
 variable "dockerfile_command" {
   default = ["app.handler"]
 }

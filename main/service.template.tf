@@ -10,6 +10,11 @@ module "service-{{service_name}}" {
   {% if environment_config.lambda_role %}
   lambda_role = environment_config.lambda_role
   {% endif %}
+
+  {% if environment_config.in_vpc %}
+  vpc_subnet_ids = split({{environment_config.subnet_ids}}, ",")
+  vpc_security_group_ids = split({{environment_config.security_group_ids}}, ",")
+  {% endif %}
 }
 
 output "{{service_name}}_docker_registry" {
