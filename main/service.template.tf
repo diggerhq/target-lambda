@@ -9,6 +9,8 @@ module "service-{{service_name}}" {
   image_uri = var.image_uri
   {% if environment_config.lambda_role %}
   lambda_role = "{{environment_config.lambda_role}}"
+  {% else %}
+  lambda_role = aws_iam_role.default_iam_for_lambda
   {% endif %}
 
   {% if environment_config.in_vpc %}
