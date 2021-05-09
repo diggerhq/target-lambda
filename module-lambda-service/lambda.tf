@@ -34,8 +34,8 @@ resource "aws_lambda_function" "test_lambda" {
   }
 
   vpc_config {
-    subnet_ids = ["subnet-dfe24085", "subnet-4bbedf2d"]
-    security_group_ids = ["sg-7e8d370e"] 
+    subnet_ids = null
+    security_group_ids = null
   }
   # dynamic "vpc_config" {
   #   for_each = var.vpc_config == null ? [] : list(var.vpc_config)
