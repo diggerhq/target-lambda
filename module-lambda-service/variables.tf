@@ -17,11 +17,7 @@ variable "lambda_role" {
   default = null
 }
 
-variable "vpc_subnet_ids" {
-  default = null
-}
-
-variable "vpc_security_group_ids" {
+variable "vpc_config" {
   default = null
 }
 

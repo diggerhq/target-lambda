@@ -1,6 +1,5 @@
 
 resource "aws_iam_role" "iam_for_lambda" {
-  count = var.lambda_role == null ? 0 : 1
   name_prefix = "iam_for_lambda"
 
   assume_role_policy = <<EOF
@@ -34,10 +33,12 @@ resource "aws_lambda_function" "test_lambda" {
     # working_directory = var.dockerfile_working_directory
   }
 
-  vpc_config {
-    count = vpc_subnet_ids == null ? 0 : 1
-    security_group_ids = var.vpc_subnet_ids
-    subnet_ids = var.vpc_security_group_ids
+  dynamic "vpc_config" {
+    for_each = var.vpc_config == null ? [] : list(vpc_config)
+    content {
+      security_group_ids = vpc_config.value.vpc_subnet_ids
+      subnet_ids = vpc_config.value.vpc_security_group_ids
+    }
   }
   # runtime = "python3.8"
 }
