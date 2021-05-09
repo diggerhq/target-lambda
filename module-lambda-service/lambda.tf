@@ -33,12 +33,16 @@ resource "aws_lambda_function" "test_lambda" {
     # working_directory = var.dockerfile_working_directory
   }
 
-  dynamic "vpc_config" {
-    for_each = var.vpc_config == null ? [] : list(var.vpc_config)
-    content {
-      subnet_ids = vpc_config.value["vpc_subnet_ids"]
-      security_group_ids = vpc_config.value["vpc_security_group_ids"]
-    }
+  vpc_config {
+    subnet_ids = ["subnet-dfe24085", "subnet-4bbedf2d"]
+    security_group_ids = ["sg-7e8d370e"] 
   }
+  # dynamic "vpc_config" {
+  #   for_each = var.vpc_config == null ? [] : list(var.vpc_config)
+  #   content {
+  #     subnet_ids = vpc_config.value["vpc_subnet_ids"]
+  #     security_group_ids = vpc_config.value["vpc_security_group_ids"]
+  #   }
+  # }
   # runtime = "python3.8"
 }
