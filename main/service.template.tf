@@ -8,7 +8,7 @@ module "service-{{service_name}}" {
   api_gateway = aws_api_gateway_rest_api.main
   image_uri = var.image_uri
   {% if environment_config.lambda_role %}
-  lambda_role = environment_config.lambda_role
+  lambda_role = "{{environment_config.lambda_role}}"
   {% endif %}
 
   {% if environment_config.in_vpc %}
