@@ -34,15 +34,7 @@ resource "aws_lambda_function" "test_lambda" {
   }
 
   vpc_config {
-    subnet_ids = []
-    security_group_ids = []
+    subnet_ids = var.vpc_subnet_ids
+    security_group_ids = var.vpc_security_groups
   }
-  # dynamic "vpc_config" {
-  #   for_each = var.vpc_config == null ? [] : list(var.vpc_config)
-  #   content {
-  #     subnet_ids = vpc_config.value["vpc_subnet_ids"]
-  #     security_group_ids = vpc_config.value["vpc_security_group_ids"]
-  #   }
-  # }
-  # runtime = "python3.8"
 }
