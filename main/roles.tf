@@ -1,6 +1,6 @@
 
 resource "aws_iam_role" "default_iam_for_lambda" {
-  name_prefix = "${var.app}-${var.environment}-lambda-role"
+  name_prefix = "${var.project_name}-${var.environment}-lambda-role"
 
   assume_role_policy = <<EOF
 {
