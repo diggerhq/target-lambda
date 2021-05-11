@@ -24,14 +24,14 @@
     availability_zones        = ["${var.region}a", "${var.region}b", "${var.region}c"]
     database_name             = local.database_name
     master_username           = local.database_username
-    master_password           = random_password.db_master_pass
+    master_password           = local.database_password
   }
 
   locals {
     database_address = aws_rds_cluster.default.endpoint
     database_name = "digger"
     database_username = "digger"
-    database_password = random_password.db_master_pass
+    database_password = random_password.db_master_pass.result
     database_port = aws_rds_cluster.default.port
     # database_url = "postgres://${local.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${local.database_name}"
   }
