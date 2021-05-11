@@ -28,7 +28,7 @@
   }
 
   locals {
-    database_address = aws_rds_cluster.endpoint
+    database_address = aws_rds_cluster.default.endpoint
     database_name = "digger"
     database_username = "digger"
     database_password = random_password.db_master_pass
