@@ -25,6 +25,8 @@
     database_name             = local.database_name
     master_username           = local.database_username
     master_password           = local.database_password
+    skip_final_snapshot       = false
+    final_snapshot_identifier = "${var.project_name}-${var.environment}-final-snapshot"
   }
 
   locals {
@@ -55,7 +57,7 @@
   }
 
   output "DGVAR_AURORA_PASSWORD" {
-    value = local.database_password
+    value = aws_ssm_parameter.database_password.arn
   }
 
   output "DGVAR_AURORA_PORT" {
