@@ -12,7 +12,7 @@
 
   resource "aws_rds_cluster_instance" "cluster_instances" {
     count              = 2
-    identifier_prefix  = "${var.app}-${var.environment}-${count.index}"
+    identifier_prefix  = "${var.project}-${var.environment}-${count.index}"
     cluster_identifier = aws_rds_cluster.default.id
     instance_class     = "db.r4.large"
     engine             = aws_rds_cluster.default.engine
@@ -20,7 +20,7 @@
   }
 
   resource "aws_rds_cluster" "default" {
-    cluster_identifier_prefix = "${var.app}-${var.environment}"
+    cluster_identifier_prefix = "${var.project}-${var.environment}"
     availability_zones        = ["${var.region}a", "${var.region}b", "${var.region}c"]
     database_name             = local.database_name
     master_username           = local.database_username
@@ -37,7 +37,7 @@
   }
 
   resource "aws_ssm_parameter" "database_password" {
-    name = "${var.app}.${var.environment}.database_password"
+    name = "${var.project}.${var.environment}.database_password"
     value = local.database_password
     type = "SecureString"
   }
