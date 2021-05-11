@@ -12,7 +12,7 @@
 
   resource "aws_rds_cluster_instance" "cluster_instances" {
     count              = 2
-    identifier_prefix  = "${var.project}-${var.environment}-${count.index}"
+    identifier_prefix  = "${var.project_name}-${var.environment}-${count.index}"
     cluster_identifier = aws_rds_cluster.default.id
     instance_class     = "db.r4.large"
     engine             = aws_rds_cluster.default.engine
@@ -20,7 +20,7 @@
   }
 
   resource "aws_rds_cluster" "default" {
-    cluster_identifier_prefix = "${var.project}-${var.environment}"
+    cluster_identifier_prefix = "${var.project_name}-${var.environment}"
     availability_zones        = ["${var.region}a", "${var.region}b", "${var.region}c"]
     database_name             = local.database_name
     master_username           = local.database_username
@@ -29,15 +29,15 @@
 
   locals {
     database_address = aws_rds_cluster.endpoint
-    database_name = local.database_name
-    database_username = local.database_username
+    database_name = "digger"
+    database_username = "digger"
     database_password = random_password.db_master_pass
-    database_port = aws_rds_cluster.port
+    database_port = aws_rds_cluster.default.port
     # database_url = "postgres://${local.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${local.database_name}"
   }
 
   resource "aws_ssm_parameter" "database_password" {
-    name = "${var.project}.${var.environment}.database_password"
+    name = "${var.project_name}.${var.environment}.database_password"
     value = local.database_password
     type = "SecureString"
   }
