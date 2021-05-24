@@ -15,6 +15,14 @@ resource "aws_iam_role" "default_iam_for_lambda" {
       "Sid": ""
     },
     {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    },
+    {
       "Action": [
           "dynamodb:GetItem",
           "dynamodb:DeleteItem",
