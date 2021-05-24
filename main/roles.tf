@@ -56,7 +56,7 @@ data "aws_iam_policy_document" "gw_connections" {
       ]
       effect = "Allow"
       resources = [
-          aws_apigatewayv2_api.main.arn
+          aws_apigatewayv2_api.main.execution_arn
       ]
   }
 }
