@@ -61,11 +61,16 @@ data "aws_iam_policy_document" "gw_connections" {
   }
 }
 
+resource "aws_iam_policy" "gw_connections" {
+    name   = "${var.project_name}-${var.environment}-gw_connections"
+    policy = data.aws_iam_policy_document.gw_connections.json
+}
+
+
 resource "aws_iam_role_policy_attachment" "gateway_connections" {
     role       = aws_iam_role.default_iam_for_lambda.name
     policy_arn = aws_iam_policy.gw_connections.arn
 }
-
 
 resource "aws_iam_role_policy_attachment" "ssm_params" {
     role       = aws_iam_role.default_iam_for_lambda.name
