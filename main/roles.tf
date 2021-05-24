@@ -14,25 +14,24 @@ resource "aws_iam_role" "default_iam_for_lambda" {
       "Effect": "Allow",
       "Sid": ""
     },
-    "Action": [
-        "dynamodb:GetItem",
-        "dynamodb:DeleteItem",
-        "dynamodb:PutItem",
-        "dynamodb:Scan",
-        "dynamodb:Query",
-        "dynamodb:UpdateItem",
-        "dynamodb:BatchWriteItem",
-        "dynamodb:BatchGetItem",
-        "dynamodb:DescribeTable",
-        "dynamodb:ConditionCheckItem"
-    ],
-    "Resource": [
+    {
+      "Action": [
+          "dynamodb:GetItem",
+          "dynamodb:DeleteItem",
+          "dynamodb:PutItem",
+          "dynamodb:Scan",
+          "dynamodb:Query",
+          "dynamodb:UpdateItem",
+          "dynamodb:BatchWriteItem",
+          "dynamodb:BatchGetItem",
+          "dynamodb:DescribeTable",
+          "dynamodb:ConditionCheckItem"
+      ],
+      "Resource": [
         "*"
-    ],
-    "Effect": "Allow"
-}
-
-
+      ],
+      "Effect": "Allow"
+    }
   ]
 }
 EOF
