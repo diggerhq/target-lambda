@@ -27,9 +27,7 @@ resource "aws_iam_role" "default_iam_for_lambda" {
           "dynamodb:DescribeTable",
           "dynamodb:ConditionCheckItem"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": "*",
       "Effect": "Allow"
     }
   ]
