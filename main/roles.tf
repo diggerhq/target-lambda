@@ -13,34 +13,38 @@ resource "aws_iam_role" "default_iam_for_lambda" {
       },
       "Effect": "Allow",
       "Sid": ""
-    },
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    },
-    {
-      "Action": [
-          "dynamodb:GetItem",
-          "dynamodb:DeleteItem",
-          "dynamodb:PutItem",
-          "dynamodb:Scan",
-          "dynamodb:Query",
-          "dynamodb:UpdateItem",
-          "dynamodb:BatchWriteItem",
-          "dynamodb:BatchGetItem",
-          "dynamodb:DescribeTable",
-          "dynamodb:ConditionCheckItem"
-      ],
-      "Resource": "*",
-      "Effect": "Allow"
     }
   ]
 }
 EOF
+}
+
+data "aws_iam_policy_document" "dynamodb" {
+    version = "2012-10-17"
+    statement {
+      sid = "AllowLimitedSSMParamstoreAccess"
+      actions = [
+        "dynamodb:GetItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:PutItem",
+        "dynamodb:Scan",
+        "dynamodb:Query",
+        "dynamodb:UpdateItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:BatchGetItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:ConditionCheckItem"
+      ]
+      effect = "Allow"
+      resources = [
+          "*"
+      ]
+  }
+}
+
+resource "aws_iam_policy" "dynamodb" {
+    name   = "${var.project_name}-${var.environment}-dynamodb"
+    policy = data.aws_iam_policy_document.dynamodb.json
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_execution_role" {
