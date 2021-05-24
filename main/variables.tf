@@ -18,6 +18,3 @@ variable "image_tag_mutability" {
   description = "The tag mutability setting for the repository (defaults to IMMUTABLE)"
 }
 
-variable "image_uri" {
-  
-}
