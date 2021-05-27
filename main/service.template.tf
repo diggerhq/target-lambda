@@ -26,3 +26,11 @@ output "{{service_name}}_docker_registry" {
 output "{{service_name}}_lb_dns" {
   value = ""
 }
+
+output "{{service_name}}_lambda_arn" {
+  value = module.service-{{service_name}}.lamba_arn
+}
+
+output "{{service_name}}_lambda_invoke_arn" {
+  value = module.service-{{service_name}}.lamba_invoke_arn
+}

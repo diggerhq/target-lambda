@@ -19,3 +19,11 @@ resource "aws_lambda_function" "test_lambda" {
     security_group_ids = var.vpc_security_groups
   }
 }
+
+output "lambda_arn" {
+  value = aws_lambda_function.test_lambda.arn
+}
+
+output "lambda_invoke_arn" {
+  value = aws_lambda_function.test_lambda.invoke_arn
+}
