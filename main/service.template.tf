@@ -28,9 +28,9 @@ output "{{service_name}}_lb_dns" {
 }
 
 output "{{service_name}}_lambda_arn" {
-  value = module.service-{{service_name}}.lamba_arn
+  value = module.service-{{service_name}}.lambda_arn
 }
 
 output "{{service_name}}_lambda_invoke_arn" {
-  value = module.service-{{service_name}}.lamba_invoke_arn
+  value = module.service-{{service_name}}.lambda_invoke_arn
 }
