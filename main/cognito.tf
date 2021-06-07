@@ -13,13 +13,13 @@ resource "aws_cognito_user_pool" "cognito_user_pool" {
   }
 
   account_recovery_setting {
-    recovery_mechanism = {
+    recovery_mechanism {
       name     = "verified_phone_number"
       priority = 1      
     }
   }
 
-  alias_attributes = "username_attributes"
+  alias_attributes = ["username_attributes"]
 
   admin_create_user_config {
     invite_message_template {
