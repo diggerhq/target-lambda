@@ -7,7 +7,7 @@ resource "aws_cognito_user_pool" "cognito_user_pool" {
     minimum_length = 6
     require_lowercase = false
     require_uppercase = false
-    require_digits = false
+    require_numbers = false
     require_symbols = false
     temporary_password_validity_days = 30
   }
