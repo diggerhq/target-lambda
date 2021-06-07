@@ -9,7 +9,7 @@ resource "aws_cognito_user_pool" "cognito_user_pool" {
     require_uppercase = false
     require_digits = false
     require_symbols = false
-    temp_password_validity_days = 30
+    temporary_password_validity_days = 30
   }
 
   account_recovery_setting {
