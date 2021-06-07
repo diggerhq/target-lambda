@@ -1,7 +1,7 @@
 
 
 resource "aws_cognito_user_pool" "cognito_user_pool" {
-  name = "${var.project_name}-${environment}"
+  name = "${var.project_name}-${var.environment}"
 
   password_policy {
     min_length = 6
