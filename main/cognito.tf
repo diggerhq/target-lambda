@@ -19,7 +19,7 @@ resource "aws_cognito_user_pool" "cognito_user_pool" {
     }
   }
 
-  alias_attributes = ["username_attributes"]
+  alias_attributes = ["preferred_username"]
 
   admin_create_user_config {
     invite_message_template {
