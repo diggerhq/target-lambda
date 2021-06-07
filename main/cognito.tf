@@ -21,11 +21,12 @@ resource "aws_cognito_user_pool" "cognito_user_pool" {
 
   alias_attributes = "username_attributes"
 
-  invite_message_template {
-    email_subject = "Invite to join Bewell Digital!"
-    email_message = "Hello {username}, you have been invited to join our Bewell Digital app! Your temporary password is {####}"
-    sms_message   = "Hello {username}, Your temporary password for our Bewell Digital app is {####}"
+  admin_create_user_config {
+    invite_message_template {
+      email_subject = "Invite to join Bewell Digital!"
+      email_message = "Hello {username}, you have been invited to join our Bewell Digital app! Your temporary password is {####}"
+      sms_message   = "Hello {username}, Your temporary password for our Bewell Digital app is {####}"
+    }
   }
-
 }
 
