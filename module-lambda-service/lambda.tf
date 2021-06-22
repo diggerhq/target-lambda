@@ -22,7 +22,7 @@ resource "aws_lambda_function" "test_lambda" {
 
 # gateway permission
 resource "aws_lambda_permission" "lambda_permission" {
-  statement_id  = "${var.project_name}${var.environment}${var.service}APIInvoke"
+  statement_id  = "${var.project_name}${var.environment}${var.service_name}APIInvoke"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.test_lambda.function_name
   principal     = "apigateway.amazonaws.com"
