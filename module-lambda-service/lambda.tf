@@ -20,6 +20,18 @@ resource "aws_lambda_function" "test_lambda" {
   }
 }
 
+# gateway permission
+resource "aws_lambda_permission" "lambda_permission" {
+  statement_id  = "${project_name}${environment}${service}APIInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.test_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  # The /*/*/* part allows invocation from any stage, method and resource path
+  # within API Gateway REST API.
+  source_arn = "${var.api_gateway.execution_arn}/*/*/*"
+}
+
 output "lambda_arn" {
   value = aws_lambda_function.test_lambda.arn
 }
