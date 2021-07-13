@@ -5,11 +5,17 @@ module "service-{{service_name}}" {
   environment = var.environment
   service_name = "{{service_name}}"
   ecr_repo = aws_ecr_repository.lambda_repo
+  api_gateway = aws_api_gateway_rest_api.main
   image_uri = var.image_uri
   {% if environment_config.lambda_role %}
   lambda_role = "{{environment_config.lambda_role}}"
   {% else %}
   lambda_role = aws_iam_role.default_iam_for_lambda.arn
+  {% endif %}
+
+  {% if environment_config.skip_gateway_trigger %}
+  # skipping allowing lambda permissions to the API gateway
+  api_gateway_trigger = false
   {% endif %}
 
 
