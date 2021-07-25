@@ -13,6 +13,11 @@ module "service-{{service_name}}" {
   lambda_role = aws_iam_role.default_iam_for_lambda.arn
   {% endif %}
 
+  {% if environment_config.timeout %}
+  timeout = {{environment_config.timeout}}
+  {% endif %}
+
+
   {% if environment_config.skip_gateway_trigger %}
   # skipping allowing lambda permissions to the API gateway
   api_gateway_trigger = false

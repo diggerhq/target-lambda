@@ -9,8 +9,12 @@ variable "ecr_repo" {}
 
 variable "api_gateway" {}
 
-variable api_gateway_trigger {
+variable "api_gateway_trigger" {
   default = true
+}
+
+variable "timeout" {
+  default = 15
 }
 
 variable "image_uri" {
