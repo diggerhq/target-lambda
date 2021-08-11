@@ -18,6 +18,13 @@ resource "aws_lambda_function" "test_lambda" {
     subnet_ids = var.vpc_subnet_ids
     security_group_ids = var.vpc_security_groups
   }
+
+  lifecycle {
+    ignore_changes = [
+      image_uri,
+      image_config
+    ]
+  }
 }
 
 # gateway permission
