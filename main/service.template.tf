@@ -38,6 +38,10 @@ output "{{service_name}}_lb_dns" {
   value = ""
 }
 
+output "{{service_name}}_function_name" {
+  value = module.service-{{service_name}}.function_name
+}
+
 output "{{service_name}}_lambda_arn" {
   value = module.service-{{service_name}}.lambda_arn
 }
