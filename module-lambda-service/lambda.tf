@@ -46,7 +46,7 @@ output "lambda_arn" {
 }
 
 output "function_name" {
-  value = aws_lambda_function.lambda.function_name
+  value = aws_lambda_function.test_lambda.function_name
 }
 
 output "lambda_invoke_arn" {
