@@ -1,5 +1,5 @@
 
-{% if lambda_runtime == "docker" %}
+{% if lambda_runtime == "Docker" %}
   module "service-{{service_name}}" {
     source = "../module-lambda-service" 
     project_name = var.project_name
