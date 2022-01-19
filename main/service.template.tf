@@ -1,5 +1,5 @@
 
-{% if lambda_runtime == "Docker" %}
+{% if lambda_runtime_aws_name == "Docker" %}
   module "service-{{service_name}}" {
     source = "../module-lambda-service" 
     project_name = var.project_name
@@ -36,7 +36,7 @@
     project_name = var.project_name
     environment = var.environment
     service_name = "{{service_name}}"
-    runtime = "{{lambda_runtime}}"
+    runtime = "{{lambda_runtime_aws_name}}"
     {% if environment_config.lambda_role %}
     lambda_role = "{{environment_config.lambda_role}}"
     {% else %}
