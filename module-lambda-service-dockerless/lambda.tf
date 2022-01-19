@@ -1,6 +1,5 @@
 
 resource "aws_lambda_function" "lambda" {
-  image_uri     = var.image_uri
   function_name = local.function_name
   role          = var.lambda_role
   package_type  = "Zip"
