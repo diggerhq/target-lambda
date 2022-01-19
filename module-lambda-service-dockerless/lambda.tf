@@ -1,5 +1,12 @@
 
+data "archive_file" "lambda_zip" {
+    type          = "zip"
+    source_file   = "index.js"
+    output_path   = "lambda_function.zip"
+}
+
 resource "aws_lambda_function" "lambda" {
+  filename      = "lambda_function.zip"
   function_name = local.function_name
   role          = var.lambda_role
   package_type  = "Zip"
