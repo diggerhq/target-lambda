@@ -8,6 +8,8 @@ exports.handler = (event, context, callback) => {
     callback(null, 'Hello from Digger!');
 }
 EOF
+    filename = "index.js"
+  }
     output_path   = "./lambda_function.zip"
 }
 
