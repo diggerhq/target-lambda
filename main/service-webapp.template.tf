@@ -149,25 +149,6 @@ resource "aws_cloudfront_distribution" "{{service_name}}_website_cdn_root" {
   }
 {% endif %}
 
-{% if environment_config.use_dggr_domain %}
-  # dggr.app domain
-  resource "aws_route53_record" "{{service_name}}_dggr_website_cdn_root_record" {
-    provider = aws.digger
-    zone_id = "{{environment_config.dggr_zone_id}}"
-    name    = local.{{service_name}}_dggr_website_domain
-    type    = "A"
-
-    alias {
-      name                   = aws_cloudfront_distribution.{{service_name}}_website_cdn_root.domain_name
-      zone_id                = aws_cloudfront_distribution.{{service_name}}_website_cdn_root.hosted_zone_id
-      evaluate_target_health = false
-    }
-  }
-
-  output "{{service_name}}_dggr_domain" {
-    value = local.{{service_name}}_dggr_website_domain
-  }
-{% endif %}
 
 # Creates policy to allow public access to the S3 bucket
 resource "aws_s3_bucket_policy" "{{service_name}}_update_website_root_bucket_policy" {
