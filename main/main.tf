@@ -21,6 +21,10 @@ terraform {
       version = "= 2.1.2"
       source  = "hashicorp/template"
     }
+
+    aws = {
+      version = "3.55.0"
+    }
   }
 }
 
@@ -29,7 +33,6 @@ terraform {
 # }
 
 provider "aws" {
-  version = "= 3.37.0"
   region  = var.region
   # profile = var.aws_profile
   access_key = var.aws_key
