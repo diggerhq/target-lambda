@@ -1,4 +1,8 @@
 
+data "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
+  arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
 resource "aws_iam_role" "default_iam_for_lambda" {
   name_prefix = "${var.project_name}-${var.environment}-lrole"
 
@@ -18,3 +22,10 @@ resource "aws_iam_role" "default_iam_for_lambda" {
 }
 EOF
 }
+
+
+resource "aws_iam_role_policy_attachment" "aws_lambda_basic_execution" {
+  role       = aws_iam_role.default_iam_for_lambda.name
+  policy_arn = data.aws_iam_policy.AWSLambdaBasicExecutionRole.arn
+}
+
