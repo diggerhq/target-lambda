@@ -17,6 +17,10 @@ variable "timeout" {
   default = 15
 }
 
+variable "memory_size" {
+  default = 128
+}
+
 variable "image_uri" {
   default = "public.ecr.aws/t4q6p9j7/dg-lambda-default:latest"
 }

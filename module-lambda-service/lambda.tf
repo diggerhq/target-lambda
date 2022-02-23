@@ -7,6 +7,8 @@ resource "aws_lambda_function" "test_lambda" {
   role          = var.lambda_role
   package_type  = "Image"
   timeout       = var.timeout
+  memory_size   = var.memory_size
+
   # docker options
   image_config {
     command           = var.dockerfile_command

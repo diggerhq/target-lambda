@@ -18,6 +18,9 @@
     timeout = {{environment_config.timeout}}
     {% endif %}
 
+    {% if environment_config.memory_size %}
+    memory_size = {{environment_config.memory_size}}
+    {% endif %}
 
     {% if environment_config.skip_gateway_trigger %}
     # skipping allowing lambda permissions to the API gateway
