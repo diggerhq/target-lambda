@@ -50,6 +50,10 @@
     timeout = {{environment_config.timeout}}
     {% endif %}
 
+    {% if environment_config.memory_size %}
+    memory_size = {{environment_config.memory_size}}
+    {% endif %}
+
     {% if environment_config.in_vpc %}
       vpc_subnet_ids = split(",", "{{environment_config.subnet_ids}}")
       vpc_security_groups = split(",", "{{environment_config.security_group_ids}}")

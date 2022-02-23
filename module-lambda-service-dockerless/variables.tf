@@ -9,6 +9,10 @@ variable "timeout" {
   default = 15
 }
 
+variable "memory_size" {
+  default = 128
+}
+
 variable "runtime" {}
 
 variable "lambda_role" {

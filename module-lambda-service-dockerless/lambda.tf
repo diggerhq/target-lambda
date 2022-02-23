@@ -20,6 +20,7 @@ resource "aws_lambda_function" "lambda" {
   role          = var.lambda_role
   package_type  = "Zip"
   timeout       = var.timeout
+  memory_size   = var.memory_size
   runtime       = var.runtime
 
   vpc_config {
