@@ -1,6 +1,6 @@
 
 {% if lambda_runtime_aws_name == "Docker" %}
-  module "service-{{service_name}}" {
+  module "{{service_name}}" {
     source = "../module-lambda-service" 
     project_name = var.project_name
     environment = var.environment
@@ -27,15 +27,15 @@
     api_gateway_trigger = false
     {% endif %}
 
-
     {% if environment_config.in_vpc %}
       vpc_subnet_ids = split(",", "{{environment_config.subnet_ids}}")
       vpc_security_groups = split(",", "{{environment_config.security_group_ids}}")
     {% endif %}
   }
 {% else %}
-  module "service-{{service_name}}" {
-    source = "../module-lambda-service-dockerless" 
+  module "{{service_name}}" {
+    source = "../module-lambda-service-dockerless"
+    lambda_function_name = "{{lambda_function_name}}"
     project_name = var.project_name
     environment = var.environment
     service_name = "{{service_name}}"
@@ -71,13 +71,13 @@ output "{{service_name}}_lb_dns" {
 }
 
 output "{{service_name}}_function_name" {
-  value = module.service-{{service_name}}.function_name
+  value = module.{{service_name}}.function_name
 }
 
 output "{{service_name}}_lambda_arn" {
-  value = module.service-{{service_name}}.lambda_arn
+  value = module.{{service_name}}.lambda_arn
 }
 
 output "{{service_name}}_lambda_invoke_arn" {
-  value = module.service-{{service_name}}.lambda_invoke_arn
+  value = module.{{service_name}}.lambda_invoke_arn
 }

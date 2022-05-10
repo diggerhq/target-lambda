@@ -1,3 +1,4 @@
+variable "lambda_function_name" {}
 
 variable "project_name" {}
 

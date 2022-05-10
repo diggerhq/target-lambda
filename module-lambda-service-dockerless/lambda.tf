@@ -16,7 +16,7 @@ EOF
 resource "aws_lambda_function" "lambda" {
   filename      = "lambda_function.zip"
   handler       = "index.handler"
-  function_name = local.function_name
+  function_name = var.lambda_function_name
   role          = var.lambda_role
   package_type  = "Zip"
   timeout       = var.timeout
