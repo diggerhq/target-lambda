@@ -1,10 +1,7 @@
 
 {% if lambda_runtime_aws_name == "Docker" %}
   module "{{service_name}}" {
-    source = "../module-lambda-service" 
-    project_name = var.project_name
-    environment = var.environment
-    service_name = "{{service_name}}"
+    source = "../module-lambda-service"
     ecr_repo = aws_ecr_repository.lambda_repo
     api_gateway = aws_api_gateway_rest_api.main
     image_uri = var.image_uri
@@ -36,9 +33,6 @@
   module "{{service_name}}" {
     source = "../module-lambda-service-dockerless"
     lambda_function_name = "{{lambda_function_name}}"
-    project_name = var.project_name
-    environment = var.environment
-    service_name = "{{service_name}}"
     runtime = "{{lambda_runtime_aws_name}}"
     {% if environment_config.lambda_role %}
     lambda_role = "{{environment_config.lambda_role}}"
