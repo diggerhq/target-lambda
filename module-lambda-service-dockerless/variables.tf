@@ -1,11 +1,5 @@
 variable "lambda_function_name" {}
 
-variable "project_name" {}
-
-variable "environment" {}
-
-variable "service_name" {}
-
 variable "timeout" {
   default = 15
 }
@@ -27,3 +21,4 @@ variable "vpc_subnet_ids" {
 variable "vpc_security_groups" {
   default = []
 }
+

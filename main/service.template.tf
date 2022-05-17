@@ -61,16 +61,14 @@
   }
 {% endif %}
 
+{% if apigateway_enabled %}
+  module "{{service_name}}_apigateway" {
+    source = "../module-api-gateway"
+    lambda_function_name = module.{{service_name}}.function_name
+    lambda_arn = module.{{service_name}}.lambda_arn
+  }
+{% endif %}
 
-        /*
-output "{{service_name}}_docker_registry" {
-  value = aws_ecr_repository.lambda_repo.repository_url
-}
-*/
-
-output "{{service_name}}_lb_dns" {
-  value = ""
-}
 
 output "{{service_name}}_function_name" {
   value = module.{{service_name}}.function_name
