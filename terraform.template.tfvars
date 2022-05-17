@@ -15,3 +15,4 @@ region = "{{region}}"
 # {% endif %}
 
 image_uri = "{{environment_config.image_uri}}"
+
