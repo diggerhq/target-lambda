@@ -61,6 +61,12 @@
     lambda_function_name = module.{{service_name}}.function_name
     lambda_arn = module.{{service_name}}.lambda_arn
   }
+
+  output "{{service_name}}_invoke_url" {
+    value = module.{{service_name}}_apigateway.invoke_url
+  }
+
+
 {% endif %}
 
 
