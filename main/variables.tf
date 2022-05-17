@@ -21,3 +21,5 @@ variable "image_tag_mutability" {
 variable "image_uri" {
   
 }
+
+variable "ecr_name" {}

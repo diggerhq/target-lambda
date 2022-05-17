@@ -23,7 +23,6 @@ resource "aws_iam_role" "default_iam_for_lambda" {
 EOF
 }
 
-
 resource "aws_iam_role_policy_attachment" "aws_lambda_basic_execution" {
   role       = aws_iam_role.default_iam_for_lambda.name
   policy_arn = data.aws_iam_policy.AWSLambdaBasicExecutionRole.arn
