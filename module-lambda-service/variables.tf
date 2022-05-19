@@ -7,10 +7,8 @@ variable "service_name" {}
 
 variable "ecr_repo" {}
 
-variable "api_gateway" {}
-
-variable "api_gateway_trigger" {
-  default = true
+variable "api_gateway" {
+  default = null
 }
 
 variable "timeout" {

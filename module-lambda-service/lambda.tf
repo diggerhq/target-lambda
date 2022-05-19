@@ -32,7 +32,7 @@ resource "aws_lambda_function" "test_lambda" {
 
 # gateway permission
 resource "aws_lambda_permission" "lambda_permission" {
-  count = var.api_gateway_trigger ? 1 : 0
+  count = var.api_gateway == null ? 0 : 1
   statement_id  = "${var.project_name}${var.environment}${var.service_name}APIInvoke"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.test_lambda.function_name
